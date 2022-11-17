@@ -1,7 +1,7 @@
 import React from "react";
 
 const BucketListItem = (props) => {
-  return <li>{props.todo.title}</li>;
+  return <li>{props.item.title}</li>;
 };
 
 export default BucketListItem;
