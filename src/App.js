@@ -1,19 +1,22 @@
 import React from "react";
-import AddToBucketListForm from "./AddToBucketlistForm";
-import BucketList from "./Bucketlist";
+import AddBucketForm from "./AddBucketForm";
+import BucketList from "./BucketList";
 import { useState } from "react";
 
 function App() {
-  const [newBucketlist, setNewTodo] = useState("");
-  console.log(newBucketlist);
+  const [bucketList, setBucketList] = useState([]);
+
+  function addBucket(newBucket) {
+    setBucketList([...bucketList, newBucket]);
+  }
 
   return (
     <div>
       <h1>Bucket List</h1>
-      <AddToBucketListForm onAddTodo={setNewTodo} />
-      <p>{newBucketlist}</p>
-      <BucketList />
+      <AddBucketForm onAddBucket={addBucket} />
+      <BucketList bucketList={bucketList} />
     </div>
   );
 }
+
 export default App;
