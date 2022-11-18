@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 
-function AddBucketListForm(props) {
+function AddBucketListForm({ onAddBucket }) {
   const [bucketTitle, setBucketTitle] = useState("");
 
   function handleTitleChange(event) {
     const newBucketTitle = event.target.value;
-    console.log(newBucketTitle);
     setBucketTitle(newBucketTitle);
   }
 
   function handleAddBucket(event) {
     event.preventDefault();
-    props.onAddBucket({
+
+    const bucketObj = {
       title: bucketTitle,
       id: Date.now(),
-    });
+    };
+
+    onAddBucket(bucketObj);
     setBucketTitle("");
   }
 

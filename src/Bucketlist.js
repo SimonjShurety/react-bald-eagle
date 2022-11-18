@@ -1,10 +1,10 @@
 import React from "react";
 import BucketListItem from "./BucketListItem";
 
-const BucketList = (props) => {
+const BucketList = ({ bucketList }) => {
   return (
     <ul>
-      {props.bucketList.map(function (item) {
+      {bucketList.map((item) => {
         return <BucketListItem key={item.id} item={item} />;
       })}
     </ul>

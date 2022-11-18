@@ -1,7 +1,7 @@
 import React from "react";
 
-const BucketListItem = (props) => {
-  return <li>{props.item.title}</li>;
+const BucketListItem = ({ item }) => {
+  return <li>{item.title}</li>;
 };
 
 export default BucketListItem;
