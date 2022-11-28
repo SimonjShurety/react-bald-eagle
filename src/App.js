@@ -1,22 +1,36 @@
 import React from "react";
 import AddBucketForm from "./AddBucketForm";
 import BucketList from "./BucketList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function App() {
-  const [bucketList, setBucketList] = useState([]);
-
-  function addBucket(newBucket) {
-    setBucketList([...bucketList, newBucket]);
-  }
-
-  return (
-    <div>
-      <h1>Bucket List</h1>
-      <AddBucketForm onAddBucket={addBucket} />
-      <BucketList bucketList={bucketList} />
-    </div>
+const useSemiPersistentState = () => {
+  const [bucketList, setBucketList] = useState(
+    JSON.parse(localStorage.getItem("savedBucketList")) || []
   );
-}
+
+  useEffect(() => {
+    localStorage.setItem("savedBucketList", JSON.stringify(bucketList));
+  }, [bucketList]);
+
+  return [bucketList, setBucketList];
+};
+
+const App = () => {
+  const [bucketList, setBucketList] = useSemiPersistentState();
+
+  const addBucket = (newBucket) => {
+    setBucketList([...bucketList, newBucket]);
+  };
+  return (
+    <>
+      <h1>Bucket List</h1>
+      <hr />
+
+      <AddBucketForm onAddBucket={addBucket} />
+
+      <BucketList bucketList={bucketList} />
+    </>
+  );
+};
 
 export default App;
