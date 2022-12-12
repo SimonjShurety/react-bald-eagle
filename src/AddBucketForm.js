@@ -22,15 +22,6 @@ function AddBucketListForm({ onAddBucket }) {
 
   return (
     <form onSubmit={handleAddBucket}>
-      <label htmlFor="BucketListTitle">Title</label>
-      <input
-        type="text"
-        id="BucketListTitle"
-        name="title"
-        value={bucketTitle}
-        onChange={handleTitleChange}
-      />
-
       <input type="submit" value="Add" />
     </form>
   );
