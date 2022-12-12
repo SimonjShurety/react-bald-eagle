@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputWithLabel = (props) => {
+const InputWithLabel = (bucketTitle, handleTitleChange) => {
   return (
     <>
       <label htmlFor="BucketListTitle">Title</label>
@@ -8,9 +8,11 @@ const InputWithLabel = (props) => {
         type="text"
         id="BucketListTitle"
         name="title"
-        value={props.bucketTitle}
-        onChange={props.handleTitleChange}
+        value={bucketTitle}
+        onChange={handleTitleChange}
       />
     </>
   );
 };
+
+export default InputWithLabel;

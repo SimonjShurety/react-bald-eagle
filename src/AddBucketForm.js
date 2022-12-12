@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import InputWithLabel from "./InputWithLabel";
 
 function AddBucketListForm({ onAddBucket }) {
   const [bucketTitle, setBucketTitle] = useState("");
@@ -22,6 +23,10 @@ function AddBucketListForm({ onAddBucket }) {
 
   return (
     <form onSubmit={handleAddBucket}>
+      <InputWithLabel
+        todoTitle={bucketTitle}
+        handleTitleChange={handleTitleChange}
+      />
       <input type="submit" value="Add" />
     </form>
   );
