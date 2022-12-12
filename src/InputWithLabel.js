@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputWithLabel = (bucketTitle, handleTitleChange) => {
+const InputWithLabel = ({ bucketTitle, handleTitleChange }) => {
   return (
     <>
       <label htmlFor="BucketListTitle">Title</label>
