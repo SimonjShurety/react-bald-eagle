@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
-const InputWithLabel = ({ bucketTitle, handleTitleChange }) => {
+const InputWithLabel = ({ bucketTitle, handleTitleChange, children }) => {
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  });
   return (
     <>
-      <label htmlFor="BucketListTitle">Title</label>
+      <label htmlFor="BucketTitle">{children}</label>
       <input
         type="text"
-        id="BucketListTitle"
+        id="BucketTitle"
         name="title"
         value={bucketTitle}
         onChange={handleTitleChange}
+        ref={inputRef}
       />
     </>
   );

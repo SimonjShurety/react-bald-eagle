@@ -24,9 +24,15 @@ function AddBucketListForm({ onAddBucket }) {
   return (
     <form onSubmit={handleAddBucket}>
       <InputWithLabel
-        todoTitle={bucketTitle}
+        bucketTitle={bucketTitle}
         handleTitleChange={handleTitleChange}
-      />
+        autofocus
+      >
+        <span>
+          <strong>Title </strong>
+        </span>
+      </InputWithLabel>
+
       <input type="submit" value="Add" />
     </form>
   );
