@@ -4,9 +4,16 @@ import BucketList from "./BucketList";
 import { useState, useEffect } from "react";
 
 const App = () => {
-  const [bucketList, setBucketList] = useState(
-    JSON.parse(localStorage.getItem("savedBucketList")) || []
-  );
+  const [bucketList, setBucketList] = useState([]);
+
+  useEffect(() => {
+    new Promise((resolve) => {
+      setTimeout(() => resolve({ data: { bucketList: bucketList } }), 2000);
+    }).then((result) => {
+      console.log(result);
+      setBucketList(result.data.bucketList);
+    });
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("savedBucketList", JSON.stringify(bucketList));
