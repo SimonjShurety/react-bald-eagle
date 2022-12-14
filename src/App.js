@@ -6,17 +6,31 @@ import { useState, useEffect } from "react";
 const App = () => {
   const [bucketList, setBucketList] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     new Promise((resolve) => {
-      setTimeout(() => resolve({ data: { bucketList: bucketList } }), 2000);
+      setTimeout(
+        () =>
+          resolve({
+            data: {
+              bucketList: JSON.parse(localStorage.getItem("savedBucketList")),
+            },
+          }),
+        2000
+      );
     }).then((result) => {
       console.log(result);
       setBucketList(result.data.bucketList);
+      setIsLoading(false);
     });
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("savedBucketList", JSON.stringify(bucketList));
+    if (isLoading === false) {
+      localStorage.setItem("savedBucketList", JSON.stringify(bucketList));
+    }
+    // add isloading dependency??
   }, [bucketList]);
 
   const addBucket = (newBucket) => {
