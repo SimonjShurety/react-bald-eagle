@@ -3,7 +3,7 @@ import AddBucketForm from "./AddBucketForm";
 import BucketList from "./BucketList";
 import { useState, useEffect } from "react";
 
-const useSemiPersistentState = () => {
+const App = () => {
   const [bucketList, setBucketList] = useState(
     JSON.parse(localStorage.getItem("savedBucketList")) || []
   );
@@ -11,12 +11,6 @@ const useSemiPersistentState = () => {
   useEffect(() => {
     localStorage.setItem("savedBucketList", JSON.stringify(bucketList));
   }, [bucketList]);
-
-  return [bucketList, setBucketList];
-};
-
-const App = () => {
-  const [bucketList, setBucketList] = useSemiPersistentState();
 
   const addBucket = (newBucket) => {
     setBucketList([...bucketList, newBucket]);
