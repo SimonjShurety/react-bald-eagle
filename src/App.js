@@ -21,6 +21,12 @@ const App = () => {
   const addBucket = (newBucket) => {
     setBucketList([...bucketList, newBucket]);
   };
+
+  const removeBucket = (id) => {
+    const newBucket = bucketList.filter((bucket) => id !== bucket.id);
+    setBucketList(newBucket);
+  };
+
   return (
     <>
       <h1>Bucket List</h1>
@@ -28,7 +34,7 @@ const App = () => {
 
       <AddBucketForm onAddBucket={addBucket} />
 
-      <BucketList bucketList={bucketList} />
+      <BucketList bucketList={bucketList} onRemoveBucket={removeBucket} />
     </>
   );
 };
