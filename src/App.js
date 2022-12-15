@@ -9,7 +9,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    new Promise((resolve) => {
+    new Promise((resolve, reject) => {
       setTimeout(
         () =>
           resolve({
@@ -21,20 +21,19 @@ const App = () => {
       );
     }).then((result) => {
       console.log(result);
-      setBucketList(result.data.bucketList);
+      setBucketList(result.data?.bucketList || []);
       setIsLoading(false);
     });
   }, []);
-
+  console.log(bucketList);
   useEffect(() => {
-    if (isLoading === false) {
+    if (!isLoading) {
       localStorage.setItem("savedBucketList", JSON.stringify(bucketList));
     }
-    // add isloading dependency??
-  }, [bucketList]);
+  }, [bucketList, isLoading]);
 
   const addBucket = (newBucket) => {
-    setBucketList([...bucketList, newBucket]);
+    setBucketList((prevBucketList) => [...prevBucketList, newBucket]);
   };
 
   const removeBucket = (id) => {
