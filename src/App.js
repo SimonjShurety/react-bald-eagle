@@ -48,8 +48,13 @@ const App = () => {
       <hr />
 
       <AddBucketForm onAddBucket={addBucket} />
-
-      <BucketList bucketList={bucketList} onRemoveBucket={removeBucket} />
+      {isLoading ? (
+        <strong>
+          <p> Please wait, loading...</p>
+        </strong>
+      ) : (
+        <BucketList bucketList={bucketList} onRemoveBucket={removeBucket} />
+      )}
     </>
   );
 };
