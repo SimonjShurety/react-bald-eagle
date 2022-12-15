@@ -29,7 +29,7 @@ function AddBucketListForm({ onAddBucket }) {
         autofocus
       >
         <span>
-          <strong>Title </strong>
+          <strong>Title: </strong>
         </span>
       </InputWithLabel>
 

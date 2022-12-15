@@ -3,20 +3,35 @@ import AddBucketForm from "./AddBucketForm";
 import BucketList from "./BucketList";
 import { useState, useEffect } from "react";
 
-const useSemiPersistentState = () => {
-  const [bucketList, setBucketList] = useState(
-    JSON.parse(localStorage.getItem("savedBucketList")) || []
-  );
+const App = () => {
+  const [bucketList, setBucketList] = useState([]);
+
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    localStorage.setItem("savedBucketList", JSON.stringify(bucketList));
+    new Promise((resolve) => {
+      setTimeout(
+        () =>
+          resolve({
+            data: {
+              bucketList: JSON.parse(localStorage.getItem("savedBucketList")),
+            },
+          }),
+        2000
+      );
+    }).then((result) => {
+      console.log(result);
+      setBucketList(result.data.bucketList);
+      setIsLoading(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (isLoading === false) {
+      localStorage.setItem("savedBucketList", JSON.stringify(bucketList));
+    }
+    // add isloading dependency??
   }, [bucketList]);
-
-  return [bucketList, setBucketList];
-};
-
-const App = () => {
-  const [bucketList, setBucketList] = useSemiPersistentState();
 
   const addBucket = (newBucket) => {
     setBucketList([...bucketList, newBucket]);
@@ -33,8 +48,13 @@ const App = () => {
       <hr />
 
       <AddBucketForm onAddBucket={addBucket} />
-
-      <BucketList bucketList={bucketList} onRemoveBucket={removeBucket} />
+      {isLoading ? (
+        <strong>
+          <p> Please wait, loading...</p>
+        </strong>
+      ) : (
+        <BucketList bucketList={bucketList} onRemoveBucket={removeBucket} />
+      )}
     </>
   );
 };
