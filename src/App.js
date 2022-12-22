@@ -54,6 +54,7 @@ const App = () => {
       ) : (
         <BucketList bucketList={bucketList} onRemoveBucket={removeBucket} />
       )}
+      <hr />
     </>
   );
 };
