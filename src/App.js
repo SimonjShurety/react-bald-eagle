@@ -8,29 +8,32 @@ const App = () => {
 
   const [isLoading, setIsLoading] = useState(true);
 
+  console.log(process.env.REACT_APP_AIRTABLE_API_KEY);
+
   useEffect(() => {
-    new Promise((resolve, reject) => {
-      setTimeout(
-        () =>
-          resolve({
-            data: {
-              bucketList: JSON.parse(localStorage.getItem("savedBucketList")),
-            },
-          }),
-        2000
-      );
-    }).then((result) => {
-      console.log(result);
-      setBucketList(result.data?.bucketList || []);
-      setIsLoading(false);
-    });
+    fetch(
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
+      {
+        // method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        setBucketList(result.records || []);
+        setIsLoading(false);
+      });
   }, []);
-  console.log(bucketList);
+
   useEffect(() => {
     if (!isLoading) {
       localStorage.setItem("savedBucketList", JSON.stringify(bucketList));
     }
   }, [bucketList, isLoading]);
+
+  console.log(bucketList);
 
   const addBucket = (newBucket) => {
     setBucketList((prevBucketList) => [...prevBucketList, newBucket]);
@@ -54,6 +57,7 @@ const App = () => {
       ) : (
         <BucketList bucketList={bucketList} onRemoveBucket={removeBucket} />
       )}
+      <hr />
     </>
   );
 };

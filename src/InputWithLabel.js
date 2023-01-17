@@ -5,7 +5,7 @@ const InputWithLabel = ({ bucketTitle, handleTitleChange, children }) => {
 
   useEffect(() => {
     inputRef.current.focus();
-  });
+  }, [bucketTitle]);
   return (
     <>
       <label htmlFor="BucketTitle">{children}</label>

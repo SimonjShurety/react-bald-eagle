@@ -1,6 +1,6 @@
 import React from "react";
 
-const BucketListItem = ({ id, title, onRemoveBucket }) => {
+const BucketListItem = ({ title, id, onRemoveBucket }) => {
   return (
     <li>
       <span>{title}</span>
