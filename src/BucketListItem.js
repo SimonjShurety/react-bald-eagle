@@ -1,9 +1,9 @@
 import React from "react";
 
-const BucketListItem = ({ title, id, onRemoveBucket }) => {
+const BucketListItem = ({ bucket, id, onRemoveBucket }) => {
   return (
     <li>
-      <span>{title}</span>
+      <span>{bucket.fields.Title}</span>
       <button type="button" onClick={() => onRemoveBucket(id)}>
         Remove
       </button>

@@ -8,7 +8,7 @@ const BucketList = ({ bucketList, onRemoveBucket }) => {
         <BucketListItem
           key={bucket.id}
           id={bucket.id}
-          title={bucket.fields.Title}
+          bucket={bucket}
           onRemoveBucket={onRemoveBucket}
         />
       ))}

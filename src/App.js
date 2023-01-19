@@ -8,13 +8,11 @@ const App = () => {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(process.env.REACT_APP_AIRTABLE_API_KEY);
-
   useEffect(() => {
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
       {
-        // method: "GET",
+        method: "GET",
         headers: {
           Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
         },
@@ -24,7 +22,8 @@ const App = () => {
       .then((result) => {
         setBucketList(result.records || []);
         setIsLoading(false);
-      });
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
@@ -32,8 +31,6 @@ const App = () => {
       localStorage.setItem("savedBucketList", JSON.stringify(bucketList));
     }
   }, [bucketList, isLoading]);
-
-  console.log(bucketList);
 
   const addBucket = (newBucket) => {
     setBucketList((prevBucketList) => [...prevBucketList, newBucket]);
