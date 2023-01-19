@@ -2,19 +2,18 @@ import React from "react";
 import AddBucketForm from "./AddBucketForm";
 import BucketList from "./BucketList";
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   const [bucketList, setBucketList] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(process.env.REACT_APP_AIRTABLE_API_KEY);
-
   useEffect(() => {
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
       {
-        // method: "GET",
+        method: "GET",
         headers: {
           Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
         },
@@ -24,7 +23,8 @@ const App = () => {
       .then((result) => {
         setBucketList(result.records || []);
         setIsLoading(false);
-      });
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
@@ -32,8 +32,6 @@ const App = () => {
       localStorage.setItem("savedBucketList", JSON.stringify(bucketList));
     }
   }, [bucketList, isLoading]);
-
-  console.log(bucketList);
 
   const addBucket = (newBucket) => {
     setBucketList((prevBucketList) => [...prevBucketList, newBucket]);
@@ -45,20 +43,43 @@ const App = () => {
   };
 
   return (
-    <>
-      <h1>Bucket List</h1>
-      <hr />
+    <BrowserRouter>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <>
+              <h1>Bucket List</h1>
+              <hr />
+              <AddBucketForm onAddBucket={addBucket} />
+              {isLoading ? (
+                <strong>
+                  <p> Please wait, loading...</p>
+                </strong>
+              ) : (
+                <>
+                  <BucketList
+                    bucketList={bucketList}
+                    onRemoveBucket={removeBucket}
+                  />
+                </>
+              )}
+              <hr />
+            </>
+          }
+        ></Route>
 
-      <AddBucketForm onAddBucket={addBucket} />
-      {isLoading ? (
-        <strong>
-          <p> Please wait, loading...</p>
-        </strong>
-      ) : (
-        <BucketList bucketList={bucketList} onRemoveBucket={removeBucket} />
-      )}
-      <hr />
-    </>
+        <Route
+          path="/new"
+          element={
+            <>
+              <h1>New Bucket List</h1>
+            </>
+          }
+        ></Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 

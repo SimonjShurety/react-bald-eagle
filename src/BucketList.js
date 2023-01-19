@@ -1,15 +1,15 @@
 import React from "react";
 import BucketListItem from "./BucketListItem";
 
-const BucketList = (props) => {
+const BucketList = ({ bucketList, onRemoveBucket }) => {
   return (
     <ul>
-      {props.bucketList.map((item) => (
+      {bucketList.map((bucket) => (
         <BucketListItem
-          key={item.id}
-          id={item.id}
-          title={item.fields.Title}
-          onRemoveBucket={props.onRemoveBucket}
+          key={bucket.id}
+          id={bucket.id}
+          bucket={bucket}
+          onRemoveBucket={onRemoveBucket}
         />
       ))}
     </ul>
