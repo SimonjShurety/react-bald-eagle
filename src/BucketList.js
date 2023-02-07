@@ -4,11 +4,11 @@ import BucketListItem from "./BucketListItem";
 const BucketList = ({ bucketList, onRemoveBucket }) => {
   return (
     <ul>
-      {bucketList.map((bucket) => (
+      {bucketList.map((item) => (
         <BucketListItem
-          key={bucket.id}
-          id={bucket.id}
-          bucket={bucket}
+          key={item.id}
+          id={item.id}
+          bucket={item}
           onRemoveBucket={onRemoveBucket}
         />
       ))}
