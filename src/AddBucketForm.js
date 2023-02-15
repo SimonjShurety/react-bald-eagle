@@ -22,18 +22,20 @@ function AddBucketListForm({ onAddBucket }) {
   }
 
   return (
-    <form onSubmit={handleAddBucket}>
+    <form className="flex justify-center" onSubmit={handleAddBucket}>
       <InputWithLabel
         bucketTitle={bucketTitle}
         handleTitleChange={handleTitleChange}
         autofocus
       >
-        <span>
-          <strong>Title: </strong>
-        </span>
+        <span className="flex justify-center"></span>
       </InputWithLabel>
 
-      <input type="submit" value="Add" />
+      <input
+        type="submit"
+        value="+"
+        class="text-5xl text-orange-100 placeholder-orange-400 py-2 pr-5 pl-4 bg-orange-500 rounded-r-full"
+      />
     </form>
   );
 }
