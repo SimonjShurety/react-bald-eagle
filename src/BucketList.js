@@ -3,7 +3,7 @@ import BucketListItem from "./BucketListItem";
 
 const BucketList = ({ bucketList, onRemoveBucket }) => {
   return (
-    <ul>
+    <>
       {bucketList.map((item) => (
         <BucketListItem
           key={item.id}
@@ -12,7 +12,7 @@ const BucketList = ({ bucketList, onRemoveBucket }) => {
           onRemoveBucket={onRemoveBucket}
         />
       ))}
-    </ul>
+    </>
   );
 };
 

@@ -49,49 +49,50 @@ const App = () => {
           exact
           path="/"
           element={
-            <div className="flex flex-col bg-orange-200 flex justify-center items-center h-screen">
-              <h1 class="text-3xl text-center font-bold mb-3 uppercase">
-                Bucket List
-              </h1>
+            <div className="flex flex-col bg-orange-200 justify-center items-center h-screen">
+              <div>
+                <h1 class="text-3xl text-center font-bold mb-3 uppercase">
+                  Bucket List
+                </h1>
 
-              <AddBucketForm onAddBucket={addBucket} />
-              {isLoading ? (
-                <strong>
-                  <p> Please wait, loading...</p>
-                </strong>
-              ) : (
-                <div class="max-h-80 overflow-y-auto">
-                  <table class="table w-full">
+                <AddBucketForm onAddBucket={addBucket} />
+                {isLoading ? (
+                  <strong>
+                    <p> Please wait, loading...</p>
+                  </strong>
+                ) : (
+                  <div class="max-h-80 overflow-y-auto">
                     <div className="bg-gray-100 mt-5 p-5 rounded-xl shadow-lg text-gray-700">
-                      <h1 className="font-bold text-xl italic block mb-0 leading-none">
-                        List:
-                      </h1>
-                      <thead>
-                        <tr>
-                          <th class="text-center px-1 py-2 bg-orange-500 text-orange-100 rounded-tl-xl">
-                            #
-                          </th>
-                          <th class="text-left px-1 py-2 bg-orange-500 text-orange-100">
-                            Details
-                          </th>
-                          <th class="px-1 py-2 bg-orange-500 text-orange-100 rounded-tr-xl">
-                            Action
-                          </th>
-                        </tr>
-                      </thead>
+                      <table class="table w-full">
+                        <thead>
+                          <tr>
+                            <th class="text-center px-1 py-2 bg-orange-500 text-orange-100 rounded-tl-xl">
+                              #
+                            </th>
+                            <th class="text-left px-1 py-2 bg-orange-500 text-orange-100">
+                              Details
+                            </th>
+                            <th class="px-1 py-2 bg-orange-500 text-orange-100 rounded-tr-xl">
+                              Action
+                            </th>
+                          </tr>
+                        </thead>
 
-                      {/* <TodoStats stats={this.calculateStats()} /> */}
-                      <div className="max-h-80 overflow-y-auto">
-                        <BucketList
-                          bucketList={bucketList}
-                          onRemoveBucket={removeBucket}
-                          // toggleBucket={toggleBucket}
-                        />
-                      </div>
+                        {/* <TodoStats stats={this.calculateStats()} /> */}
+                        {/* <div className="max-h-80 overflow-y-auto"> */}
+                        <tbody>
+                          <BucketList
+                            bucketList={bucketList}
+                            onRemoveBucket={removeBucket}
+                            // toggleBucket={toggleBucket}
+                          />
+                        </tbody>
+                        {/* </div> */}
+                      </table>
                     </div>
-                  </table>
-                </div>
-              )}
+                  </div>
+                )}
+              </div>
             </div>
           }
         ></Route>
