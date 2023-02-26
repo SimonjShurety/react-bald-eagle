@@ -4,7 +4,7 @@ import style from "./BucketListItem.module.css";
 const BucketListItem = ({ bucket, id, onRemoveBucket }) => {
   return (
     <li className={style.ListItem}>
-      <span>{bucket.fields.Title}</span>
+      <span>{bucket.fields.title}</span>
       <button type="button" onClick={() => onRemoveBucket(id)}>
         Remove
       </button>
