@@ -1,3 +1,24 @@
 .ListItem {
-  color: brown;
+  color: black;
+  list-style-type: none;
+}
+
+.button {
+  position: relative;
+  border: none;
+  border-color: #da0e0e;
+  cursor: grab;
+  border-radius: 0.8rem;
+  background-color: green;
+  color: red;
+  margin-left: 0.8rem;
+  transition: 0.2s ease-in;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+.button:hover {
+  box-shadow: inset -2.5em 0 0 0 #15c94b;
+  color: red;
+  border-color: #000000;
 }

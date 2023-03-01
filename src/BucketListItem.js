@@ -5,8 +5,12 @@ const BucketListItem = ({ bucket, id, onRemoveBucket }) => {
   return (
     <li className={style.ListItem}>
       <span>{bucket.fields.title}</span>
-      <button type="button" onClick={() => onRemoveBucket(id)}>
-        Remove
+      <button
+        className={style.button}
+        type="button"
+        onClick={() => onRemoveBucket(id)}
+      >
+        X
       </button>
     </li>
   );
