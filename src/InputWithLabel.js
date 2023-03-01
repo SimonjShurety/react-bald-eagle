@@ -16,6 +16,7 @@ const InputWithLabel = ({ bucketTitle, handleTitleChange, children }) => {
         value={bucketTitle}
         onChange={handleTitleChange}
         ref={inputRef}
+        placeholder="Enter new bucket list activity here"
       />
     </>
   );

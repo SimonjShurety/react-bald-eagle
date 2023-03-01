@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import InputWithLabel from "./InputWithLabel";
+import style from "./AddBucketForm.module.css";
 
 function AddBucketListForm({ onAddBucket }) {
   const [bucketTitle, setBucketTitle] = useState("");
@@ -27,13 +28,9 @@ function AddBucketListForm({ onAddBucket }) {
         bucketTitle={bucketTitle}
         handleTitleChange={handleTitleChange}
         autofocus
-      >
-        <span>
-          <strong>Title: </strong>
-        </span>
-      </InputWithLabel>
+      ></InputWithLabel>
 
-      <input type="submit" value="Add" />
+      <input className={style.submitButton} type="submit" value="Add" />
     </form>
   );
 }

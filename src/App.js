@@ -1,8 +1,9 @@
-import React from "react";
-import AddBucketForm from "./AddBucketForm";
-import BucketList from "./BucketList";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import styles from "./App.module.css";
+
+import AddBucketForm from "./AddBucketForm";
+import BucketList from "./BucketList";
 
 const App = () => {
   const [bucketList, setBucketList] = useState([]);
@@ -45,13 +46,14 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* <div className={styles.container}> */}
         <Route
           exact
           path="/"
           element={
             <>
               <h1>Bucket List</h1>
-              <hr />
+
               <AddBucketForm onAddBucket={addBucket} />
               {isLoading ? (
                 <strong>
@@ -65,7 +67,6 @@ const App = () => {
                   />
                 </>
               )}
-              <hr />
             </>
           }
         ></Route>
@@ -78,6 +79,7 @@ const App = () => {
             </>
           }
         ></Route>
+        {/* </div> */}
       </Routes>
     </BrowserRouter>
   );
