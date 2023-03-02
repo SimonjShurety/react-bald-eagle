@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import styles from "./App.module.css";
 
-import AddBucketForm from "./AddBucketForm";
-import BucketList from "./BucketList";
+import AddBucketForm from "./components/AddBucketForm";
+import BucketList from "./components/BucketList";
 
 const App = () => {
   const [bucketList, setBucketList] = useState([]);

@@ -1,5 +1,5 @@
-import React from "react";
 import style from "./BucketListItem.module.css";
+import PropTypes from "prop-types";
 
 const BucketListItem = ({ bucket, id, onRemoveBucket }) => {
   return (
@@ -14,6 +14,10 @@ const BucketListItem = ({ bucket, id, onRemoveBucket }) => {
       </button>
     </li>
   );
+};
+
+BucketListItem.propTypes = {
+  onRemoveTodo: PropTypes.func,
 };
 
 export default BucketListItem;
