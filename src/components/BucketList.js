@@ -17,8 +17,6 @@ const BucketList = ({ bucketList, onRemoveBucket }) => {
   );
 };
 
-BucketList.propTypes = {
-  onRemoveTodo: PropTypes.func,
-};
+BucketList.propTypes = { onRemoveBucket: PropTypes.func };
 
 export default BucketList;
