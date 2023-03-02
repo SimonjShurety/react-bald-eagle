@@ -1,4 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
+
+import PropTypes from "prop-types";
 
 const InputWithLabel = ({ bucketTitle, handleTitleChange, children }) => {
   const inputRef = useRef();
@@ -20,6 +22,10 @@ const InputWithLabel = ({ bucketTitle, handleTitleChange, children }) => {
       />
     </>
   );
+};
+
+InputWithLabel.propTypes = {
+  handleTitleChange: PropTypes.func,
 };
 
 export default InputWithLabel;

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import InputWithLabel from "./InputWithLabel";
 import style from "./AddBucketForm.module.css";
+import PropTypes from "prop-types";
 
 function AddBucketListForm({ onAddBucket }) {
   const [bucketTitle, setBucketTitle] = useState("");
@@ -34,5 +35,9 @@ function AddBucketListForm({ onAddBucket }) {
     </form>
   );
 }
+
+AddBucketListForm.propTypes = {
+  onAddBucket: PropTypes.func,
+};
 
 export default AddBucketListForm;
