@@ -24,8 +24,6 @@ const InputWithLabel = ({ bucketTitle, handleTitleChange, children }) => {
   );
 };
 
-InputWithLabel.propTypes = {
-  handleTitleChange: PropTypes.func,
-};
+InputWithLabel.propTypes = { handleTitleChange: PropTypes.func };
 
 export default InputWithLabel;

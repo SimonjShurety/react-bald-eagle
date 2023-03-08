@@ -36,8 +36,6 @@ function AddBucketListForm({ onAddBucket }) {
   );
 }
 
-AddBucketListForm.propTypes = {
-  onAddBucket: PropTypes.func,
-};
+AddBucketListForm.propTypes = { onAddBucket: PropTypes.func };
 
 export default AddBucketListForm;
