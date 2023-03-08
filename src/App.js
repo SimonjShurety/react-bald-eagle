@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import styles from "./App.module.css";
+// import styles from "./App.module.css";
 
 import AddBucketForm from "./components/AddBucketForm";
 import BucketList from "./components/BucketList";
@@ -23,6 +23,13 @@ const App = () => {
     )
       .then((response) => response.json())
       .then((result) => {
+        result.records.sort(function (objectA, objectB) {
+          console.log(result.records);
+          if (objectA.fields.title < objectB.fields.title) return -1;
+          if (objectA.fields.title > objectB.fields.title) return 1;
+          return 0;
+        });
+
         setBucketList(result.records || []);
         setIsLoading(false);
       })
