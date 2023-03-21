@@ -1,4 +1,6 @@
 .ListItem {
+  display: flex;
+  justify-content: space-between;
   color: black;
   list-style-type: none;
 }
@@ -9,8 +11,9 @@
   border-color: #da0e0e;
   cursor: grab;
   border-radius: 0.8rem;
-  background-color: green;
+  background-color: rgb(247, 216, 216);
   color: red;
+  font-weight: bold;
   margin-left: 0.8rem;
   transition: 0.2s ease-in;
   padding-left: 0.4rem;

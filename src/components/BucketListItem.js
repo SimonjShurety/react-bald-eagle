@@ -1,18 +1,18 @@
-import style from "./BucketListItem.module.css";
+import styles from "./BucketListItem.module.css";
 import PropTypes from "prop-types";
 
 const BucketListItem = ({ bucket, id, onRemoveBucket }) => {
   return (
-    <li className={style.ListItem}>
+    <div className={styles.ListItem}>
       <span>{bucket.fields.title}</span>
       <button
-        className={style.button}
+        className={styles.button}
         type="button"
         onClick={() => onRemoveBucket(id)}
       >
         X
       </button>
-    </li>
+    </div>
   );
 };
 

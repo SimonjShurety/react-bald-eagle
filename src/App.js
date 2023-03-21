@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import "./App.module.css";
+import styles from "./App.module.css";
 
 import AddBucketForm from "./components/AddBucketForm";
 import BucketList from "./components/BucketList";
@@ -24,7 +24,6 @@ const App = () => {
       .then((response) => response.json())
       .then((result) => {
         result.records.sort(function (objectA, objectB) {
-          console.log(result.records);
           return objectA.fields.title < objectB.fields.title ? -1 : 1;
         });
 

@@ -1,10 +1,11 @@
 import BucketListItem from "./BucketListItem";
+import styles from "./BucketList.module.css";
 
 import PropTypes from "prop-types";
 
 const BucketList = ({ bucketList, onRemoveBucket }) => {
   return (
-    <ul>
+    <div className={styles.BucketList}>
       {bucketList.map((item) => (
         <BucketListItem
           key={item.id}
@@ -13,7 +14,7 @@ const BucketList = ({ bucketList, onRemoveBucket }) => {
           onRemoveBucket={onRemoveBucket}
         />
       ))}
-    </ul>
+    </div>
   );
 };
 

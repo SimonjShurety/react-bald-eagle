@@ -1,6 +1,6 @@
 import { useState } from "react";
 import InputWithLabel from "./InputWithLabel";
-import style from "./AddBucketForm.module.css";
+import styles from "./AddBucketForm.module.css";
 import PropTypes from "prop-types";
 
 function AddBucketListForm({ onAddBucket }) {
@@ -31,7 +31,7 @@ function AddBucketListForm({ onAddBucket }) {
         autofocus
       ></InputWithLabel>
 
-      <input className={style.submitButton} type="submit" value="Add" />
+      <input className={styles.submitButton} type="submit" value="Add" />
     </form>
   );
 }
